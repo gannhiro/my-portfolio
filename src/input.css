@@ -135,21 +135,13 @@
   --color-primary: oklch(93.29% 0.111 99.89);
 }
 
-.stretched-up-text {
-  display: inline-block;
-  transform: scaleY(1.5);
-}
-
-.glow-outwards {
-  filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 10px #fff);
-}
-
 ul {
   padding-left: calc(var(--spacing) * 4);
+  list-style-type: disc;
+  margin-bottom: calc(var(--spacing) * 1);
 }
 
 li {
-  font-size: var(--text-xl);
-  line-height: var(--tw-leading, var(--text-xl--line-height));
   margin-bottom: calc(var(--spacing) * 1);
+  --tw-font-weight: var(--font-weight-black);
 }

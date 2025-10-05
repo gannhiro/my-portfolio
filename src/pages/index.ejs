@@ -3,43 +3,44 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estellar</title>
+    <title><%- myName %>'s Resume</title>
     <script src="htmx.min.js" defer></script>
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body class="bg-white h-screen w-screen px-[20vw]">
-    <main class="h-[30vh] mb-35 relative">
+  <body class="font-main  font-normal bg-white h-screen w-screen md:px-[20vw] overflow-x-hidden">
+    <main class="h-[30vh] 2xl:mb-35 md:mb-45 sm:mb-20 mb-30 relative">
       <img class="absolute h-full w-full inset-0 z-0 object-cover" src="../assets/compooter.jpg">
       <header class="z-10 relative flex items-center justify-center h-full">
         <a
           href="/resume"
-          class="flex items-center font-main font-black text-xl bg-white hover:cursor-pointer hover:bg-gray-200 p-3 px-5 rounded-full"
+          class="flex items-center font-black text-xl bg-white hover:cursor-pointer hover:bg-gray-200 p-3 px-5 rounded-full"
           download
           tabindex="1">
           DOWNLOAD RESUME
           <img src="../assets/save_file.svg" alt="Download Resume" class="size-7 ml-1">
-      </a>
+        </a>
       </header>
-
       <div class="absolute z-20 h-20 w-[101%] -bottom-10 -rotate-3 bg-white">
         <div class="absolute left-0 top-0">
-          <h1 class="font-main font-bold text-6xl">ETHAN RAPHAEL B. LORZANO</h1>
-          <h1 class="font-main font-thin text-3xl">software engineer</h1>
+          <h1 class="font-bold md:text-6xl text-4xl">ETHAN RAPHAEL B. LORZANO</h1>
+          <h1 class="font-thin md:text-3xl text-xl">software engineer</h1>
         </div>
       </div>
     </main>
-    <section class="grid 2xl:grid-cols-2 2xl:grid-rows-1 gap-5 font-main mb-10 grid-rows-2 grid-cols-1 px-3">
-      <article class="shadow-lg hover:shadow-gray-400 transition-shadow duration-300 py-5 px-7 rounded-lg border-1 border-black relative" tabindex="2">
+    <section class="grid 2xl:grid-cols-2 2xl:grid-rows-1 gap-5 mb-10 grid-rows-2 grid-cols-1 px-3">
+      <article
+        class="shadow-lg hover:shadow-gray-400 transition-shadow duration-300 py-5 px-7 rounded-lg border-1 border-black relative"
+        tabindex="2">
         <h4 class="font-display2 text-4xl absolute -top-8 left-0">Work Experience</h4>
-        <ul class="pl-4 list-disc font-bold text-lg">
+        <ul class="text-lg">
           <li>Globe Telecom Inc.</li>
-          <p class="font-normal text-base mb-2">
+          <p class="text-base mb-2">
             As an integral member of the Enablement Team, operating within the Growth
             division of the Consumer Mobile Business group. My primary responsibility is to facilitate
             and drive the successful implementation of various use cases in GlobeOne and GOMO.
           </p>
           <li class="text-xl mb-1">Deloitte Philippines Delivery Centre</li>
-          <p class="font-normal text-base mb-2">
+          <p class="text-base mb-2">
             In Deloitte Philippines Delivery Center, I was hired as a Junior Developer for React Native. Here is where I honed my skills through internal training and was assigned
             to different client-facing projects.
           </p>
@@ -47,16 +48,17 @@
         </ul>
       </article>
       <article tabindex="3" class="shadow-lg hover:shadow-gray-400 transition-shadow duration-300 py-5 px-7 rounded-lg border-1 border-black relative">
-        <h4 class="font-display2 text-4xl absolute -top-8 left-0">github!
-          <span class="font-main text-base font-normal">please star bungaku T-T</span>
-        </h4>
+        <h4 class="font-display2 text-4xl absolute -top-8 left-0">github!</h4>
         <ul class="pl-4 list-disc font-bold text-lg">
-          <li class="text-xl mb-1"><a href="https://github.com/gannhiro/bungaku" target="_blank">bungaku <%- versionName %></a></li>
-          <p class="font-normal text-base mb-2">
-            A simple Japanese comic (manga) Android app built using Bare React Native.
+          <li class="text-xl mb-1">bungaku</li>
+          <p class="text-base font-normal mb-2">
+            A simple Japanese comic (manga) reader for Android built with Bare React Native. Current version:
+            <a href="https://github.com/gannhiro/bungaku" target="_blank" class="text-blue-400 font-bold underline">
+              <%- bungakuVersion %>
+            </a>
           </p>
-          <ul>
-            <li>WatermelonDb</li>
+          <ul class="text-base font-normal">
+            <li class="">WatermelonDb</li>
             <li>Redux Toolkit</li>
             <li>RN FileSystem</li>
             <li>Reanimated</li>
@@ -64,7 +66,7 @@
             <li>Navigation</li>
             <li>Github Actions for CI/CD</li>
           </ul>
-          <li class="text-xl mb-1"><a href="https://github.com/gannhiro" target="_blank">Portfolio Website</a></li>
+          <li class="text-xl mb-1"><a href="https://github.com/gannhiro" target="_blank">Over-Engineered Portfolio Site</a></li>
         </ul>
       </article>
     </section>
