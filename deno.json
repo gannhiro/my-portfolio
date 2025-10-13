@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "dev": "deno run --allow-net --allow-read --watch=src/pages src/server.ts",
+    "dev": "deno run --allow-net --allow-read --allow-env --env-file --watch=src/pages src/server.ts",
     "watch:css": "deno run -A npm:postcss-cli@^11.0.1 --watch --config ./postcss.config.js ./src/input.css -o ./public/styles.css",
     "build:css": "deno run -A npm:postcss-cli@^11.0.1 --config ./postcss.config.js ./src/input.css -o ./public/styles.css"
   },

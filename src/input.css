@@ -145,3 +145,12 @@ li {
   margin-bottom: calc(var(--spacing) * 1);
   --tw-font-weight: var(--font-weight-black);
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
