@@ -10,12 +10,11 @@ const pagesPath = `${Deno.cwd()}/src/pages`;
 router.get("/", async (context) => {
   const githubToken = Deno.env.get("GITHUB_TOKEN");
   const fetchHeaders = new Headers();
-  fetchHeaders.set("Authorization", `Bearer: ${githubToken}`);
+  fetchHeaders.set("Authorization", `Bearer ${githubToken}`);
 
   const latestRelease = await fetch(
     "https://api.github.com/repos/gannhiro/bungaku/releases/latest",
     {
-      credentials: "include",
       headers: fetchHeaders,
     }
   );
