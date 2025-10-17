@@ -1,4 +1,4 @@
-import { Application, Router } from "@oak/oak";
+import { Application, Router, send } from "@oak/oak";
 import { renderFileToString } from "@hongminhee/dejs";
 import { type GitHubRelease } from "./types.ts";
 import { getName } from "./services.ts";
@@ -6,6 +6,7 @@ import { getName } from "./services.ts";
 export const app = new Application();
 const router = new Router();
 const pagesPath = `${Deno.cwd()}/src/pages`;
+const resumeFileName = "ETHAN_LORZANO_Resume.pdf";
 
 router.get("/", async (context) => {
   const githubToken = Deno.env.get("GITHUB_TOKEN");
@@ -23,6 +24,7 @@ router.get("/", async (context) => {
 
   const body = await renderFileToString(`${pagesPath}/index.ejs`, {
     bungakuVersion: latestReleaseJson.name,
+    songName: "lighthouse-ac7.mp3",
     myName,
   });
 
@@ -31,15 +33,14 @@ router.get("/", async (context) => {
 });
 
 router.get("/resume", async (context) => {
-  const filename = "ETHAN_LORZANO_Resume.pdf";
-  const filePath = `${Deno.cwd()}/public/assets/${filename}`;
+  const filePath = `${Deno.cwd()}/public/assets/${resumeFileName}`;
   const fileInfo = await Deno.stat(filePath);
   const file = await Deno.open(filePath, { read: true });
 
   context.response.headers.set("Content-Type", "application/pdf");
   context.response.headers.set(
     "Content-Disposition",
-    `attachment; filename="${filename}"`
+    `attachment; filename="${resumeFileName}"`
   );
   context.response.headers.set("Content-Length", fileInfo.size.toString());
   context.response.body = file.readable;
