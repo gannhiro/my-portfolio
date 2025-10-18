@@ -7,16 +7,21 @@
 <html lang="en" class="no-scrollbar overscroll-none">
   <head>
     <title>Ethan's Portfolio</title>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is Ethan's Ace Combat themed portfolio.">
     <meta property="og:image" content="https://www.estella-dev.cloud/assets/preview.jpg">
     <meta property="og:title" content="Ethan's Portfolio">
     <meta property="og:description" content="Ethan, callsign: ESTELLA">
     <meta property="og:url" content="https://www.estella-dev.cloud">
     <meta property="og:type" content="website">
-    <meta property="description" content="This is Ethan's Ace Combat themed portfolio.">
+
     <script src="htmx.min.js" defer></script>
     <script src="main.js" defer></script>
+
+    <link rel="preload" href="./fonts/victor-mono-v5-latin-200.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/victor-mono-v5-latin-700.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
   </head>
@@ -39,8 +44,17 @@
       <div class="w-full h-full flex items-center justify-center">
         <div class="sm:-rotate-45 mx-10 sm:mx-0 flex flex-col justify-center items-center" id="movablePlane">
           <div class="relative">
-            <img class="size-75 object-contain" src="./assets/f22-plane-base.webp" alt="f22 raptor"/>
-            <img id="sonicBoom" class="size-75 object-contain absolute top-0 left-0 opacity-0" src="./assets/f22-plane-sonic.webp" alt="f22 raptor sonic boom"/>
+            <img
+            class="size-75 object-contain"
+            src="./assets/f22-plane-base.webp"
+            alt="f22 raptor"
+            fetchpriority="high"/>
+            <img
+              id="sonicBoom"
+              class="size-75 object-contain absolute top-0 left-0 opacity-0"
+              src="./assets/f22-plane-sonic.webp"
+              alt="f22 raptor sonic boom"
+              fetchpriority="high"/>
           </div>
           <h1 class="sm:absolute sm:-bottom-20 sm:-left-21 sm:rotate-90 sm:w-115 text-center">
             DOES THE COLOR OF THE SKY MEAN ANYTHING TO YOU?
@@ -52,8 +66,8 @@
       <header class="mb-5 sm:mb-10 flex flex-wrap">
         <div class="w-full flex-1 mb-5 sm:mb-0">
           <h1 class="text-3xl sm:text-6xl font-bold">ETHAN RAPHAEL B. LORZANO</h1>
-          <h1 class="text-xl sm:text-4xl font-thin tracking-widest mb-5">software engineer</h1>
-          <h4 class="font-bold mb-2 border-b-1 border-b-white">ASSESSMENT REPORT: LORZANO, E. R.</h4>
+          <h2 class="text-xl sm:text-4xl font-thin tracking-widest mb-5">software engineer</h2>
+          <h3 class="font-bold mb-2 border-b-1 border-b-white">ASSESSMENT REPORT: LORZANO, E. R.</h3>
           <p class="text-justify">
             A Senior Mobile Engineer with expertise in cross-platform development using React Native and proficiency in native iOS (Swift). He is a product-focused developer with experience contributing to UX strategy and using generative AI to solve complex problems and streamline development. He is seeking to join a team focused on technical excellence and product innovation.
           </p>
@@ -94,11 +108,15 @@
         <div class="flex flex-wrap mb-10">
           <div class="w-full lg:flex-1 mr-0 lg:mr-5 mb-5 lg:mb-0 flex flex-col items-center">
             <div>
-              <img src="./assets/bungaku.webp">
+              <img src="./assets/bungaku.webp" alt="bungaku logo">
               <h2 class="font-bold text-2xl text-center tracking-widest">bungaku</h2>
-              <% if (bungakuVersion.length > 0) { %>
-                <p class=" text-center"><%= bungakuVersion %></p>
-              <% } %>
+              <div
+                hx-get="/bungaku-version"
+                hx-trigger="load">
+                <% if (bungakuVersion.length > 0) { %>
+                  <p class=" text-center"><%= bungakuVersion %></p>
+                <% } %>
+              </div>
             </div>
             <a href="https://github.com/gannhiro/bungaku" class="px-4 py-3 bg-white cursor-pointer text-bg1 rounded-full my-5 hover:bg-gray-200" target="_blank">
               Go to repo ->
@@ -106,7 +124,7 @@
             <p class="text-justify mb-5">
               He developed a Japanese comic reader application from scratch using Bare React Native. This project utilizes WatermelonDB and Redux for state management and RN Filesystem for file handling.
             </p>
-            <h4 class="text-xl font-bold self-start">Features</h4>
+            <h3 class="text-xl font-bold self-start">Features</h3>
             <ol class="pl-5 text-justify">
               <li class="list-disc">
                 <span class="font-bold">Local Library</span>: The system allows users to download chapters of manga provided by MangaDex for offline access.

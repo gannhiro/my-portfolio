@@ -9,16 +9,25 @@ const pagesPath = `${Deno.cwd()}/src/pages`;
 const resumeFileName = "ETHAN_LORZANO_Resume.pdf";
 
 router.get("/", async (context) => {
-  const bungakuVersion = await getBungakuVersion();
-
   const body = await renderFileToString(`${pagesPath}/index.ejs`, {
-    bungakuVersion,
+    bungakuVersion: "loading...",
     technicalSkills,
     dialogues,
   });
 
   context.response.body = body;
   context.response.headers.set("Content-Type", "text/html");
+});
+
+router.get("/bungaku-version", async (context) => {
+  const bungakuVersion = await getBungakuVersion();
+
+  const versionText =
+    bungakuVersion.length > 0 ? bungakuVersion : "Version not found";
+  const htmlSnippet = `<p class="text-center">${versionText}</p>`;
+
+  context.response.body = htmlSnippet;
+  context.response.headers.set("Content-Type", "text/plain");
 });
 
 router.get("/resume", async (context) => {
