@@ -1,7 +1,7 @@
-import { Application, Router, send } from "@oak/oak";
+import { Application, Router } from "@oak/oak";
 import { renderFileToString } from "@hongminhee/dejs";
-import { type GitHubRelease } from "./types.ts";
-import { getName } from "./services.ts";
+import { getBungakuVersion } from "./services.ts";
+import { dialogues, technicalSkills } from "./constants.ts";
 
 export const app = new Application();
 const router = new Router();
@@ -9,23 +9,12 @@ const pagesPath = `${Deno.cwd()}/src/pages`;
 const resumeFileName = "ETHAN_LORZANO_Resume.pdf";
 
 router.get("/", async (context) => {
-  const githubToken = Deno.env.get("GITHUB_TOKEN");
-  const fetchHeaders = new Headers();
-  fetchHeaders.set("Authorization", `Bearer ${githubToken}`);
-
-  const latestRelease = await fetch(
-    "https://api.github.com/repos/gannhiro/bungaku/releases/latest",
-    {
-      headers: fetchHeaders,
-    }
-  );
-  const latestReleaseJson: GitHubRelease = await latestRelease.json();
-  const myName = getName();
+  const bungakuVersion = await getBungakuVersion();
 
   const body = await renderFileToString(`${pagesPath}/index.ejs`, {
-    bungakuVersion: latestReleaseJson.name,
-    songName: "lighthouse-ac7.mp3",
-    myName,
+    bungakuVersion,
+    technicalSkills,
+    dialogues,
   });
 
   context.response.body = body;

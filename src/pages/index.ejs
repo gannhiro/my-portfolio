@@ -1,14 +1,20 @@
+<!--
+  bungakuVersion: string
+  dialogues: DialogueView[]
+-->
+
 <!DOCTYPE html>
 <html lang="en" class="no-scrollbar overscroll-none">
   <head>
+    <title>Ethan's Portfolio</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethan's Portfolio</title>
     <meta property="og:image" content="https://www.estella-dev.cloud/assets/preview.jpg">
     <meta property="og:title" content="Ethan's Portfolio">
-    <meta property="og:description" content="Ethan, callsign: ESTELLA.">
-    <meta property="og:url" content="https://www.estella-dev.com">
+    <meta property="og:description" content="Ethan, callsign: ESTELLA">
+    <meta property="og:url" content="https://www.estella-dev.cloud">
     <meta property="og:type" content="website">
+    <meta property="description" content="This is Ethan's Ace Combat themed portfolio.">
     <script src="htmx.min.js" defer></script>
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="styles.css">
@@ -27,14 +33,14 @@
       </defs>
     </svg>
     <audio id="background-music" autoplay loop>
-      <source src="./audio/<%= songName %>" type="audio/mpeg">
+      <source src="./audio/lighthouse-ac7.mp3" type="audio/mpeg">
     </audio>
     <div class="h-screen">
       <div class="w-full h-full flex items-center justify-center">
         <div class="sm:-rotate-45 mx-10 sm:mx-0 flex flex-col justify-center items-center" id="movablePlane">
           <div class="relative">
-            <img class="size-75 object-contain" src="./assets/f22-plane-base.png"/>
-            <img id="sonicBoom" class="size-75 object-contain absolute top-0 left-0 opacity-0" src="./assets/f22-plane-sonic.png"/>
+            <img class="size-75 object-contain" src="./assets/f22-plane-base.webp" alt="f22 raptor"/>
+            <img id="sonicBoom" class="size-75 object-contain absolute top-0 left-0 opacity-0" src="./assets/f22-plane-sonic.webp" alt="f22 raptor sonic boom"/>
           </div>
           <h1 class="sm:absolute sm:-bottom-20 sm:-left-21 sm:rotate-90 sm:w-115 text-center">
             DOES THE COLOR OF THE SKY MEAN ANYTHING TO YOU?
@@ -42,7 +48,7 @@
         </div>
       </div>
     </div>
-    <main class="mx-8 sm:mx-30">
+    <main class="mx-8 sm:mx-20 xl:mx-30">
       <header class="mb-5 sm:mb-10 flex flex-wrap">
         <div class="w-full flex-1 mb-5 sm:mb-0">
           <h1 class="text-3xl sm:text-6xl font-bold">ETHAN RAPHAEL B. LORZANO</h1>
@@ -53,7 +59,7 @@
           </p>
         </div>
         <aside class="w-full lg:w-1/3 flex sm:flex-col items-center justify-center">
-          <img src="./assets/razgriz-patch.png" class="size-50 object-contain">
+          <img src="./assets/razgriz-patch.webp" class="size-50 object-contain" alt="razgriz patch">
           <h1 class="font-thin mt-5">CALLSIGN: ESTELLA</h1>
         </aside>
       </header>
@@ -85,18 +91,18 @@
       </section>
       <section class="mb-10">
         <h1 class="text-3xl sm:text-4xl font-bold pb-5 mb-5 border-b-1 border-b-white">GITHUB</h1>
-        <div class="flex flex-wrap">
+        <div class="flex flex-wrap mb-10">
           <div class="w-full lg:flex-1 mr-0 lg:mr-5 mb-5 lg:mb-0 flex flex-col items-center">
             <div>
-              <img src="./assets/bungaku.png">
+              <img src="./assets/bungaku.webp">
               <h2 class="font-bold text-2xl text-center tracking-widest">bungaku</h2>
-              <% if (bungakuVersion && bungakuVersion.length > 0) { %>
-                <p class=" text-center mb-5"><%= bungakuVersion %></p>
+              <% if (bungakuVersion.length > 0) { %>
+                <p class=" text-center"><%= bungakuVersion %></p>
               <% } %>
             </div>
-
-            <a href="https://github.com/gannhiro/bungaku" class="px-4 py-3 bg-white cursor-pointer text-bg1 rounded-full mb-5 hover:bg-gray-200" target="_blank">Go to repo -></a>
-
+            <a href="https://github.com/gannhiro/bungaku" class="px-4 py-3 bg-white cursor-pointer text-bg1 rounded-full my-5 hover:bg-gray-200" target="_blank">
+              Go to repo ->
+            </a>
             <p class="text-justify mb-5">
               He developed a Japanese comic reader application from scratch using Bare React Native. This project utilizes WatermelonDB and Redux for state management and RN Filesystem for file handling.
             </p>
@@ -114,50 +120,40 @@
             </ol>
           </div>
           <div class="flex flex-col items-center justify-center w-full lg:w-1/4">
-            <img class="object-contain mb-4" src="./assets/bungaku-preview-1.gif" alt="bungaku-preview-1.gif">
+            <video autoplay loop muted playsinline class="w-60 mb-5">
+              <source src="./assets/bungaku-preview.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
             <h4>Preview of bungaku</h4>
           </div>
         </div>
-      </section>
-      <section class="mb-10">
-        <h1 class="text-4xl font-bold pb-5 mb-10 border-b-1 border-b-white">TECHNICAL SKILLS</h1>
-        <div class="mb-5 lg:mb-10 flex flex-wrap items-center">
-          <div class="w-full lg:w-1/3 mb-5 lg:mb-0 flex flex-col items-center">
-            <img class="size-20 mb-3 object-contain" src="./assets/react-logo.png">
-            <h4>React/React Native</h4>
-          </div>
-          <div class="w-full lg:w-1/3 mb-5 lg:mb-0 flex flex-col items-center">
-            <img class="size-20 mb-3 object-contain" src="./assets/tsjs-logo.png">
-            <h4>TypeScript/JavaScript</h4>
-          </div>
-          <div class="w-full lg:w-1/3 mb-5 lg:mb-0 flex flex-col items-center">
-            <img class="size-20 mb-3 object-contain" src="./assets/swift-logo.png">
-            <h4>Swift - UIKit/SwiftUI</h4>
-          </div>
+        <div class="h-[90vh] flex flex-col items-center justify-center">
+          <% for (let i = 0; i < dialogues.length; i++) { %>
+            <% if (i === 1) { %>
+              <a href="https://github.com/gannhiro/bungaku" class="px-4 py-3 bg-white cursor-pointer text-bg1 rounded-full mb-7 hover:bg-gray-200" target="_blank">
+                Go to repo ->
+              </a>
+            <% } %>
+            <%- await include('./src/views/acDialogueView.ejs', dialogues[i]) %>
+          <% } %>
         </div>
-        <div class="mb-10 flex flex-wrap justify-evenly items-center">
-          <div class="w-full lg:w-1/4 mb-2 lg:mb-0 flex flex-col items-center">
-            <img class="size-20 mb-3 object-contain" src="./assets/deno-logo.png">
-            <h4>Deno + Oak</h4>
-          </div>
-          <div class="w-full lg:w-1/4 mb-2 lg:mb-0 flex flex-col items-center">
-            <img class="size-20 mb-3 object-contain" src="./assets/htmx-logo.png">
-            <h4>HTMX</h4>
-          </div>
-          <div class="w-full lg:w-1/4 mb-2 lg:mb-0 flex flex-col items-center">
-            <img class="size-20 mb-3 object-contain" src="./assets/tailwind-logo.png">
-            <h4>TailwindCSS</h4>
-          </div>
-          <div class="w-full lg:w-1/4 mb-2 lg:mb-0 flex flex-col items-center">
-            <img class="size-20 mb-3 object-contain" src="./assets/nginx-logo.png">
-            <h4>NginX</h4>
-          </div>
+      </section>
+      <section class="mb-10 py-5">
+        <h1 class="text-4xl font-bold pb-5 mb-10 border-b-1 border-b-white">TECHNICAL SKILLS</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-10">
+          <% for(let i = 0; i < technicalSkills.length; i++) { %>
+            <%- await include('./src/views/iconWithTitle.ejs', technicalSkills[i]) %>
+          <% } %>
         </div>
       </section>
     </main>
-    <div class="absolute w-screen top-0 left-0 flex flex-col items-center pt-5">
-      <h4 class="text-green-600 font-bold text-lg">Estella</h4>
-      <h5><span class="text-green-600 font-bold">&lt;&lt;</span> With love and care for all that we do. <span class="text-green-600 font-bold">&gt;&gt;</span></h5>
+
+    <div class="absolute w-screen top-0 left-0 pt-5 px-5">
+      <%- await include('./src/views/acDialogueView.ejs', {
+        name: "Estella",
+        content: "With love and care for all that we do.",
+        affiliation: "friendly"
+      }) %>
     </div>
   </body>
 </html>

@@ -1,21 +1,22 @@
-export function getName(): string {
-  const totalWeight = nicknames.reduce(
-    (sum, nickname) => sum + nickname.weight,
-    0
-  );
+import { GitHubRelease } from "./types.ts";
 
-  let randomWeight = Math.random() * totalWeight;
-  for (const nickname of nicknames) {
-    randomWeight -= nickname.weight;
-    if (randomWeight <= 0) return nickname.name;
+export async function getBungakuVersion(): Promise<string> {
+  const githubToken = Deno.env.get("GITHUB_TOKEN");
+  const fetchHeaders = new Headers();
+  fetchHeaders.set("Authorization", `Bearer ${githubToken}`);
+
+  try {
+    const latestRelease = await fetch(
+      "https://api.github.com/repos/gannhiro/bungaku/releases/latest",
+      {
+        headers: fetchHeaders,
+      }
+    );
+    const latestReleaseJson: GitHubRelease = await latestRelease.json();
+
+    return latestReleaseJson.name;
+  } catch (e) {
+    console.log(e);
+    return "";
   }
-
-  return nicknames[0].name;
 }
-
-// please call me by these names~
-const nicknames = [
-  { name: "Ethan", weight: 0.8 }, // my real name
-  { name: "Gann", weight: 0.1 }, // my gamer name 🎮
-  { name: "Estella", weight: 0.1 }, // my err fem name
-];

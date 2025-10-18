@@ -2,7 +2,7 @@ const planeContainer = document.getElementById('movablePlane');
 const planeSonicBoom = document.getElementById('sonicBoom');
 
 function easeOutCubic(x) {
-  return 1 - Math.pow(1 - x, 15)
+  return 1 - Math.pow(1 - x, 5)
 }
 
 self.addEventListener('scroll', () => {

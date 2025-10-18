@@ -59,3 +59,14 @@ export type GitHubRelease = {
   zipball_url: string | null;
   body: string | null;
 };
+
+export type ACDialogueView = {
+  name: string;
+  content: string;
+  affiliation: "friendly" | "enemy" | "unknown";
+};
+
+export type IconWithTitle = {
+  iconSource: string;
+  title: string;
+}
