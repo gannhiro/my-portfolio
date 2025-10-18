@@ -34,26 +34,26 @@ export const dialogues: ACDialogueView[] = [
 export const technicalSkills: IconWithTitle[] = [
   {
     title: "React/React Native",
-    iconSource: "react-logo.webp",
+    iconSource: "react-logo",
   },
   {
     title: "TypeScript/JavaScript",
-    iconSource: "tsjs-logo.webp",
+    iconSource: "tsjs-logo",
   },
   {
     title: "Swift - UIKit/SwiftUI",
-    iconSource: "swift-logo.webp",
+    iconSource: "swift-logo",
   },
   {
     title: "Deno + Oak",
-    iconSource: "deno-logo.webp",
+    iconSource: "deno-logo",
   },
   {
     title: "HTMX",
-    iconSource: "htmx-logo.webp",
+    iconSource: "htmx-logo",
   },
   {
     title: "TailwindCSS",
-    iconSource: "tailwind-logo.webp",
+    iconSource: "tailwind-logo",
   },
 ];
