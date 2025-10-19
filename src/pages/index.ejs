@@ -1,0 +1,304 @@
+<!--
+  bungakuVersion: string
+  dialogues: DialogueView[]
+-->
+
+<!DOCTYPE html>
+<html lang="en" class="no-scrollbar overscroll-none">
+  <head>
+    <title>Ethan's Portfolio</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is Ethan's Ace Combat themed portfolio.">
+    <meta property="og:image" content="https://www.estella-dev.cloud/assets/preview.webp">
+    <meta property="og:title" content="Ethan's Portfolio">
+    <meta property="og:description" content="Ethan, callsign: ESTELLA">
+    <meta property="og:url" content="https://www.estella-dev.cloud">
+    <meta property="og:type" content="website">
+
+    <script src="htmx.min.js" defer></script>
+    <script src="main.js" defer></script>
+
+    <link rel="preload" href="./fonts/victor-mono-v5-latin-100.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+  </head>
+  <body class="relative grain-overlay font-main font-thin min-h-screen bg-gradient-to-tr from-bg1 to-bg3 text-white">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="hidden">
+      <defs>
+        <filter id="grainy-noise">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.5"
+            numOctaves="3"
+            stitchTiles="stitch"/>
+        </filter>
+      </defs>
+    </svg>
+    <audio id="background-music" autoplay loop>
+      <source src="./audio/lighthouse-ac7.mp3" type="audio/mpeg">
+    </audio>
+    <div class="absolute w-screen top-0 left-0 pt-5 px-5">
+      <%- await include('./src/views/acDialogueView.ejs', {
+        name: "Estella",
+        content: "With love and care for all that we do.",
+        affiliation: "friendly"
+      }) %>
+    </div>
+    <div class="relative w-screen h-screen flex items-center justify-center">
+      <div class="sm:-rotate-45 mx-10 sm:mx-0 flex flex-col justify-center items-center" id="movablePlane">
+        <div class="relative">
+          <img
+          class="size-75 object-contain"
+          srcset="./assets/f22-plane-base-sm.webp 480w,
+                  ./assets/f22-plane-base-md.webp 800w"
+          sizes="(max-width: 639px) 200px,
+                430px"
+          src="./assets/f22-plane-base-md.webp"
+          alt="f22 raptor"
+          fetchpriority="high"/>
+          <img
+            id="sonicBoom"
+            class="size-75 object-contain absolute top-0 left-0 opacity-0"
+            srcset="./assets/f22-plane-sonic-sm.webp 480w,
+                    ./assets/f22-plane-sonic-md.webp 800w"
+            sizes="(max-width: 639px) 200px,
+                  430px"
+            src="./assets/f22-plane-sonic-md.webp"
+            alt="f22 raptor sonic boom"
+            fetchpriority="high"/>
+        </div>
+        <h1 class="sm:absolute sm:-bottom-20 sm:-left-21 sm:rotate-90 sm:w-120 text-center">
+          DOES THE COLOR OF THE SKY MEAN ANYTHING TO YOU?
+        </h1>
+      </div>
+      <button
+        id="mute-button"
+        class="opacity-20 hover:opacity-100 absolute bottom-10 left-10 md:bottom-auto md:left-auto md:top-10 md:right-10 p-2 bg-white rounded-full text-sm text-bg2 cursor-pointer z-10"
+        aria-label="Mute Button"
+        aria-labelledby="volume-image"
+        role="button">
+        <img
+          id="volume-image"
+          class="size-6"
+          src="./assets/muted.webp"
+          alt="mute/unmute button">
+      </button>
+    </div>
+    <main class="mx-8 sm:mx-20 xl:mx-30">
+      <header class="mb-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 col-span-2 md:col-span-1 mb-20">
+          <div class="col-span-2">
+            <h1 class="text-3xl sm:text-6xl font-bold">ETHAN RAPHAEL B. LORZANO</h1>
+            <h2 class="text-xl sm:text-4xl font-thin tracking-widest mb-5">software engineer</h2>
+            <h3 class="font-bold mb-2 border-b-1 border-b-white">ASSESSMENT REPORT: LORZANO, E. R.</h3>
+            <p class="text-justify">
+              A Senior Mobile Engineer with expertise in cross-platform development using React Native and proficiency in native iOS (Swift). He is a product-focused developer with experience contributing to UX strategy and using generative AI to solve complex problems and streamline development. He is seeking to join a team focused on technical excellence and product innovation.
+            </p>
+          </div>
+          <aside class="flex sm:flex-col items-center justify-center">
+            <img
+              srcset="./assets/razgriz-patch-sm.webp 480w,
+                      ./assets/razgriz-patch-md.webp 800w"
+              sizes="200px"
+              src="./assets/razgriz-patch-md.webp"
+              class="size-50 object-contain"
+              alt="razgriz patch">
+            <h1 class="font-thin mt-5">CALLSIGN: ESTELLA</h1>
+          </aside>
+        </div>
+        <div class="flex justify-center">
+          <%- await include("./src/views/contactInfoCard.ejs") %>
+        </div>
+      </header>
+      <section class="mb-20 sm:mb-30">
+        <h1 class="text-3xl sm:text-4xl font-bold pb-5 mb-5 border-b-1 border-b-white">EXPERIENCE</h1>
+        <div class="py-3 flex justify-center">
+          <a href="/resume" class="px-4 py-3 bg-white cursor-pointer text-bg1 rounded-full mb-5 hover:bg-gray-400">Download Resume -></a>
+        </div>
+        <ol>
+          <li>
+            <h2 class="font-bold text-xl">Globe Telecom Inc. (2024-Present)</h2>
+            <p class="mb-5 text-justify">
+              As part of the Enablement Team, he is responsible for implementing use cases in the GlobeOne and GOMO applications. His work has involved integrating third-party platforms like Braze to track user behavior and leading the development of screens and components for internal tools. He has also collaborated on design decisions and developed scalable components in Swift.
+            </p>
+            <div class="mb-10 py-5 lg:mx-20 grid grid-cols-2">
+              <%- await include('./src/views/iconWithTitle.ejs', {
+                title: "GlobeOne",
+                iconSource: "globeone-logo"
+              }) %>
+              <%- await include('./src/views/iconWithTitle.ejs', {
+                title: "GOMO!",
+                iconSource: "gomo-logo"
+              }) %>
+            </div>
+          </li>
+          <li>
+            <h2 class="font-bold text-xl">Deloitte Philippines Delivery Center (2022-2024)</h2>
+            <p class="mb-5 text-justify">
+              Hired as a Junior Developer, he gained experience through internal training and client-facing projects. He was responsible for creating React Native TypeScript code for the Flight Centre Mobile App, utilizing CI/CD platforms like Bitrise, and maintaining reusable UI components. He also served as the sole mobile developer for the Oporto Mobile App, where he fixed bugs and replicated client designs.
+            </p>
+            <div class="mb-10 py-5 lg:mx-20 grid grid-cols-3">
+              <%- await include('./src/views/iconWithTitle.ejs', {
+                title: "ATDW",
+                iconSource: "atdw-logo"
+              }) %>
+              <%- await include('./src/views/iconWithTitle.ejs', {
+                title: "Oporto",
+                iconSource: "oporto-logo"
+              }) %>
+              <%- await include('./src/views/iconWithTitle.ejs', {
+                title: "Flight Centre",
+                iconSource: "flight-centre-logo"
+              }) %>
+            </div>
+          </li>
+          <li>
+            <h2 class="font-bold text-xl">Chimes Consulting (2020-2021)</h2>
+            <p class="mb-5 text-justify">
+              As a Frontend Associate, he assisted the development team by performing quality assurance testing on WordPress websites and contributed to website maintenance and content creation.
+            </p>
+          </li>
+        </ol>
+      </section>
+      <section class="mb-20 sm:mb-30">
+        <h1 class="text-3xl sm:text-4xl font-bold pb-5 mb-5 border-b-1 border-b-white">GITHUB</h1>
+        <div class="flex flex-wrap mb-20 items-center justify-center">
+          <div class="lg:flex-1 mb-10 lg:mb-0 flex flex-col items-center">
+            <div>
+              <img
+                srcset="./assets/bungaku-sm.webp 480w,
+                        ./assets/bungaku-md.webp 800w"
+                sizes="200px"
+                src="./assets/bungaku-md.webp"
+                alt="bungaku logo">
+              <h2 class="font-bold text-2xl text-center tracking-widest">bungaku</h2>
+              <div
+                hx-get="/bungaku-version"
+                hx-trigger="load">
+                <% if (bungakuVersion.length > 0) { %>
+                  <p class=" text-center"><%= bungakuVersion %></p>
+                <% } %>
+              </div>
+            </div>
+            <a href="https://github.com/gannhiro/bungaku" class="px-4 py-3 bg-white cursor-pointer text-bg1 rounded-full my-5 hover:bg-gray-400" target="_blank">
+              Go to repo ->
+            </a>
+            <p class="text-justify mb-5">
+              He developed a Japanese comic reader application from scratch using Bare React Native. This project utilizes WatermelonDB and Redux for state management and RN Filesystem for file handling.
+            </p>
+            <h3 class="text-xl font-bold self-start">Features</h3>
+            <ol class="pl-5 text-justify">
+              <li class="list-disc">
+                <span class="font-bold">Local Library</span>: The system allows users to download chapters of manga provided by MangaDex for offline access.
+              </li>
+              <li class="list-disc">
+                <span class="font-bold">Resistant Downloads</span>: A key operational feature is its resistant download capability, which ensures that any ongoing downloads will automatically resume on app start if the application was previously closed.
+              </li>
+              <li class="list-disc">
+                <span class="font-bold">Zoomable pages</span>: To help with people with poor eyesight or just wants to appreciate the details of the comic.
+              </li>
+            </ol>
+          </div>
+          <div class="flex flex-col items-center justify-center">
+            <video autoplay loop muted playsinline class="w-[80%] lg:w-3/5 mb-5 aspect-[9/22]">
+              <source src="./assets/bungaku-preview.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <h4>Preview of bungaku</h4>
+          </div>
+        </div>
+        <div class="grid grid-cols-1">
+          <% for (let i = 0; i < dialogues.length; i++) { %>
+            <% if (i === 1) { %>
+              <a href="https://github.com/gannhiro/bungaku" class="px-4 py-3 bg-white cursor-pointer text-bg1 rounded-full mb-7 hover:bg-gray-400 w-fit justify-self-center" target="_blank">
+                Go to repo ->
+              </a>
+            <% } %>
+            <%- await include('./src/views/acDialogueView.ejs', dialogues[i]) %>
+          <% } %>
+        </div>
+      </section>
+      <section class="mb-20 sm:mb-30 py-5">
+        <h1 class="text-4xl font-bold pb-5 mb-10 border-b-1 border-b-white">TECHNICAL SKILLS</h1>
+        <div class="mb-15 grid grid-cols-2 xl:grid-cols-4 gap-y-10">
+          <% for(let i = 0; i < technicalSkills.length; i++) { %>
+            <%- await include('./src/views/iconWithTitle.ejs', technicalSkills[i]) %>
+          <% } %>
+        </div>
+        <div class="grid grid-cols-1 gap-y-5">
+          <%- await include('./src/views/acDialogueView.ejs', {
+            name: "Estella",
+            content: "If you're interested in me but don't see the technical skills listed here,",
+            affiliation: "friendly"
+          }) %>
+          <%- await include('./src/views/acDialogueView.ejs', {
+            name: "Estella",
+            content: "don't hesitate to message or mail me and ask questions about it.",
+            affiliation: "friendly"
+          }) %>
+          <%- await include('./src/views/acDialogueView.ejs', {
+            name: "Estella",
+            content: "I don't wanna brag but, I research a lot of things in the background.",
+            affiliation: "friendly"
+          }) %>
+          <%- await include('./src/views/acDialogueView.ejs', {
+            name: "Estella",
+            content: "Because who knows? I might know watcha talking about",
+            affiliation: "friendly"
+          }) %>
+        </div>
+      </section>
+      <section class="mb-10 py-5">
+        <h1 class="text-4xl font-bold pb-5 mb-10 border-b-1 border-b-white">EDUCATION</h1>
+        <%- await include('./src/views/acDialogueView.ejs', {
+          name: "Estella",
+          content: "Kinda nostalgic looking at these...",
+          affiliation: "friendly"
+        }) %>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div class="flex flex-col items-center">
+            <img src="./assets/mapua-makati.webp" class="w-full lg:h-100 mb-3 object-cover rounded-4xl border-1 border-white" alt="Mapua Makati">
+            <h2 class="text-center text-2xl font-bold">MAPUA MAKATI</h2>
+            <h3 class="text-center">Half-Scholar | BS Information Systems</h3>
+            <p class="text-center">Final Grade: 1.8</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <img src="./assets/san-beda-rizal.webp" class="w-full lg:h-100 mb-3 object-cover rounded-4xl border-1 border-white" alt="San Beda Rizal">
+            <h2 class="text-center text-2xl font-bold">SAN BEDA UNIVERSITY</h2>
+            <h3 class="text-center">STEM</h3>
+            <p class="text-center">Grade 1 -> Senior High School</p>
+          </div>
+        </div>
+      </section>
+      <section class="mb-10 py-5">
+        <%- await include('./src/views/acDialogueView.ejs', {
+          name: "Estella",
+          content: "Just in case we forget.",
+          affiliation: "friendly"
+        }) %>
+        <div class="flex justify-center">
+          <%- await include("./src/views/contactInfoCard.ejs") %>
+        </div>
+        <%- await include('./src/views/acDialogueView.ejs', {
+          name: "Estella",
+          content: "Thanks for sticking around, buddy.",
+          affiliation: "friendly"
+        }) %>
+        <%- await include('./src/views/acDialogueView.ejs', {
+          name: "Estella",
+          content: "I'll see ya around.",
+          affiliation: "friendly"
+        }) %>
+      </section>
+    </main>
+    <footer class="h-[30vh] flex items-center justify-center">
+      <div class="px-5 flex flex-col items-center">
+        <h1 class="text-center">this portfolio is inspired by</h1>
+        <img src="./assets/ace-combat-logo.webp" class="object-contain brightness-0 invert" alt="Ace Combat Logo">
+      </div>
+    </footer>
+  </body>
+</html>
+

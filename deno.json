@@ -1,0 +1,13 @@
+{
+  "tasks": {
+    "dev": "deno run --allow-net --allow-read --allow-env --env-file --watch=src/pages src/server.ts",
+    "watch:css": "deno run -A npm:@tailwindcss/cli@^4.1.14 -i ./src/input.css -o ./public/styles.css --watch"
+  },
+  "vendor": true,
+  "imports": {
+    "@hongminhee/dejs": "jsr:@hongminhee/dejs@^0.10.5+jsr.1",
+    "@oak/oak": "jsr:@oak/oak@^17.1.6",
+    "@tailwindcss/cli": "npm:@tailwindcss/cli@^4.1.14",
+    "tailwindcss": "npm:tailwindcss@^4.1.14"
+  }
+}
